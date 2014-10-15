@@ -7,7 +7,7 @@ function segs = slic(I, k, m)
 %addpath('lib');
 
 %Problem parameters
-residualThreshold = 5;
+residualThreshold = 10;
 h = size(I,1);
 w = size(I,2);
 N = w*h;
@@ -104,6 +104,10 @@ while residue > residualThreshold
         idx = segs==cluster;
         totalElements = sum(idx(:));
         
+        if(totalElements == 0)
+           continue; 
+        end
+        
         posX = repmat(1:h,w,1)';
         xValues = idx.*posX;
         newX = round(sum(xValues(:))/totalElements);
@@ -126,6 +130,8 @@ end
 
 
 %POST PROCESSING
+
+
 window = 2;
 newSegs = zeros(size(segs));
 for i = 1:numel(segs)
@@ -137,7 +143,8 @@ for i = 1:numel(segs)
     region = segs(x0:x1,y0:y1);
     newSegs(i) = mode(region(:));
 end
-
 segs = newSegs;
+
+
 
 end
