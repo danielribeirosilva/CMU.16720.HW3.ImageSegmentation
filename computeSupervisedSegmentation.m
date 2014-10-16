@@ -6,11 +6,21 @@ dicSize = 150;
 
 
 %dataset
+dataset = 'MSRC';
+groundTruthFormat = '.bmp';
+numberOfCategories = msrc.lcls;
+trainImages = msrc.trainimgs;
+testImages = msrc.testimgs;
+categoryNames = msrc.cls;
+
+%{
 dataset = 'iCoseg';
+groundTruthFormat = '.png';
 numberOfCategories = icoseg.lcls;
 trainImages = icoseg.trainimgs;
 testImages = icoseg.testimgs;
 categoryNames = icoseg.cls;
+%}
 
 %paths
 impath = ['data/',dataset];
@@ -47,7 +57,7 @@ for iCls = 1:numberOfCategories
         load([visualwordpath,'/',category,'/',name,'.mat']);
 		
         %load ground truth
-        groundtruthfile = [impath,'/',category,'/GroundTruth/',name,'.png'];
+        groundtruthfile = [impath,'/',category,'/GroundTruth/',name,groundTruthFormat];
         Itruth = imread(groundtruthfile);
         
         

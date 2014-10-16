@@ -7,12 +7,12 @@ clear all; addpath('lib');
 load('datapaths.mat'); % load data paths
 
 % init slic parameters (adjust here to make your own superpixels)
-k = 300;
+k = 600;
 m = 10;
 
 %% extract superpixels for iCoseg
 impath = 'data/iCoseg';
-outdir = genDir('segments/iCoseg');
+outdir = genDir('superpixels_k600/iCoseg');
 
 cont_icoseg = 0;
 for iCls = 1:icoseg.lcls
@@ -38,7 +38,7 @@ end
 
 %% extract superpixels for msrc
 impath = 'data/msrc';
-outdir = genDir('segments/MSRC');
+outdir = genDir('superpixels_k600/MSRC');
 
 cont_msrc = 0;
 for iCls = 1:msrc.lcls
