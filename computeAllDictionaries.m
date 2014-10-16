@@ -30,7 +30,7 @@ for iCls = 1:icoseg.lcls
 end
 
 
-%% extract superpixels for msrc
+%% extract dictionaries for msrc
 impath = 'data/msrc';
 outdir = genDir('dictionaries/MSRC');
 
